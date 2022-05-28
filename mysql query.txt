@@ -1,0 +1,37 @@
+create database demo;
+
+use demo;
+
+drop table demo;
+
+create table demo(id int primary key, name varchar(20) not null, city varchar(20));
+
+select * from demo1;
+
+desc demo;
+
+alter table demo rename to demo1;
+
+truncate table demo1;
+
+insert into demo1 (id, name, city) values (12, 'niki', 'abc');
+ 
+insert into demo1 values(10, 'abc', 'kml','popo');
+
+alter table demo1 add salary varchar(20);
+
+alter table demo1 change country lastname varchar(20);
+
+update demo1 set lastname = 'zzzz' where name = 'abc';
+
+select * from demo1 limit 1 offset 2;
+
+create table laptop (lid int primary key, model varchar(50), demo1Id int, foreign key(demo1Id) references demo1(id));
+
+select * from laptop;
+
+insert into laptop values(2, 'hp', 1);
+
+select demo1.name, laptop.model from demo1, laptop where demo1.id=laptop.demo1Id;
+
+select  max(id) from demo1;

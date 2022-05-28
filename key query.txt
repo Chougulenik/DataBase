@@ -1,0 +1,25 @@
+use demo;
+
+create table city(cid int primary key auto_increment, cityname varchar(20));
+
+drop table city;
+
+insert into city(cityname) values('pune'),( 'satara'),( 'sangli'),( 'pune'),( 'satara'); 
+
+select * from city;
+
+create table person (id int primary key not null, name varchar(20) not null, age int not null,gender varchar(20) not null, city int not null, foreign key(city) references city(cid));
+
+desc person;
+
+drop table person;
+
+insert into person values(5,'tnu', 30, 'female',1),(6,'tara', 22, 'male',4)
+ ,(7,'ronit', 19, 'male',5),
+ (8,'amu', 25, 'female',5);
+
+ select * from person;
+
+ select person.name, person.age, city.cityname from person, city where person.id=city.cid;
+
+ select name from person where name like '_m%';
