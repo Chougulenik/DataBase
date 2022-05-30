@@ -1,0 +1,53 @@
+use demo;
+
+create table employee (id int primary key, name varchar(20), salary int);
+
+drop table employee;
+insert into employee values(5, 600000, 'ooo'),(6, 1400, 'anita'),(7, 6000, 'ppp');
+
+select * from employee;
+
+select max(salary) from employee;
+
+alter table employee drop column name;
+
+alter table employee add name varchar(20);
+
+update employee set name = 'zara' where id = 4;
+
+select name from employee where salary = (select max(salary) from employee); 
+
+select * from employee order by salary desc  limit 1 offset 1;
+select max(salary) from employee where salary <>(select max(salary) from employee);
+
+select * from(select * from employee order by salary desc limit 2) as highest_salary order by salary limit 1;
+
+select * from employee where salary >= 50000;
+select max(salary) from employee;
+
+select sum(salary) from employee where salary>50000;
+select salary , name from employee where id in (select  id from employee);
+
+select name , salary from employee;
+
+select  * from employee where id in (select id from employee where salary>50000);
+
+select id, salary, name from employee where salary >50000;
+
+select id, salary, name from employee where salary =50000;
+
+select id, name, salary from employee where salary = (select max(salary) from employee);
+
+select id, name, salary from employee where salary not in (select salary from employee where salary = 50000);
+
+select * from employee where not salary = 800000;
+
+select * from employee order by salary;
+
+select max(salary) from employee where salary not in  (select max(salary) from employee);
+
+select salary, count(salary) from employee group by salary;
+
+select salary from employee having salary > 50000;
+
+select name from employee where salary in (select salary from employee group by salary having count(*)<2);
