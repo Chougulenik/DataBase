@@ -23,3 +23,18 @@ insert into person values(5,'tnu', 30, 'female',1),(6,'tara', 22, 'male',4)
  select person.name, person.age, city.cityname from person, city where person.id=city.cid;
 
  select name from person where name like '_m%';
+select * from city where  exists (select id from person where city.cid = person.id);
+
+ select * from city where cityname in ('sangli', 'pune');
+
+ select * from city;
+
+select * from city where cityname in (select name from person);
+
+select person.name, city.cityname from city inner join person on city.cid = person.id;
+
+select person.id, city.cid, person.name, city.cityname from person left join city on city.cid = person.id;
+
+select person.id, city.cid, person.name, city.cityname from person right join city on city.cid = person.id;
+
+select person.id, city.cid, person.name, city.cityname from person cross join city;
